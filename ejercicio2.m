@@ -1,14 +1,4 @@
-A=1;B=0;C=0;D=4;E=8;H=8
-%RESPUESTA ESCALON FILTRO IIR
-%y(n) = 0.1 x(n) + 0.9 y(n-1)
-vi = (H*A);
-a = (D+E);
-dt=10e-3;
-t(1) = 0;
-vf(1) = 0;
-for i = 2 : 41;
-    t(i) = (i-1) * dt;
-    vf(i) = (1-a) * vi + a * vf(i-1);
-end
-close; stem(t,vf);
-xlabel('seg');grid
+w = 0 : (pi/200) : pi;
+X = exp(j*w) + 2 + 3*exp(-j*w) + 4*exp(-j*2*w) + 5*exp(j*w);
+subplot 331; plot(w/pi, abs(X)); grid % grafica magnitud
+xlabel('w / Pi [rad/m]'); title('Magnitud')
